@@ -1,11 +1,9 @@
-### EnerNOC email signature generator
+### Yardi email signature generator
 
-Generates uniformly-styled email signatures for EnerNOC employees.
+Generates uniformly-styled email signatures for Yardi employees.
 
-We acknowledge that this is a blunt tool at the moment, but plan to iterate as feedback surfaces.
-
-Please [create issues](https://github.com/pulseenergy/enernoc-email-signature-generator/issues) for bugs, annoyances, observations, etc. 
+Please [create issues](https://github.com/pulseenergy/yardi-email-signature-generator/issues) if there's anything it could do better.
 
 ------
 
-Hastily built by [Neil Gentleman](http://github.com/nigelzor) and [Tyler Fawcett](http://github.com/tylerfawcett).
+This product is brought to you by [Neil Gentleman](http://github.com/nigelzor) and [Tyler Fawcett](http://github.com/tylerfawcett).
