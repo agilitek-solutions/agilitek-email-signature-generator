@@ -23,7 +23,6 @@
 		.check-email {color: #003e74; display: inline-block; margin-left: 10px;}
 		.label {width: 80px; display: inline-block; padding: 0.3em 0; margin-top: 2px;}
 		.sig-input {margin-bottom: 5px;	width: auto; padding: 0.3em;}
-		.select-address {width: 600px;}
 		.sig-inputs-wrapper {}
 		.sig-preview {margin: -25px 0 10px;}
 		.sig-source {padding: 0.3em; margin: 0; font-size: 11px; font-family: courier new, monospace;}
@@ -88,13 +87,6 @@
 						input['email'].value = placeholder ? '' : (text.toLowerCase().replace(/ /g, '.') + '@yardi.com');
 						input['email'].oninput();
 					}
-					if (name === 'address') {
-						var selected = input['address'].options[input['address'].selectedIndex];
-						input['office'].value = formatPhoneNumber(selected.getAttribute('data-office'));
-						input['office'].oninput();
-						input['fax'].value = formatPhoneNumber(selected.getAttribute('data-fax'));
-						input['fax'].oninput();
-					}
 					if (name === 'email') {
 						var check = auto['email'] && !placeholder;
 						document.querySelector('.check-email').style.visibility = check ? 'visible' : 'hidden';
@@ -122,20 +114,18 @@
 			var output = {
 				name: document.querySelector('.sig-preview div:nth-of-type(1) > strong'),
 				title: document.querySelector('.sig-preview div:nth-of-type(1) > span'),
-				address: document.querySelector('.sig-preview div:nth-of-type(2)'),
-				office: document.querySelector('.sig-preview div:nth-of-type(3) > a:nth-of-type(1)'),
-				mobile: document.querySelector('.sig-preview div:nth-of-type(3) > a:nth-of-type(2)'),
-				fax: document.querySelector('.sig-preview div:nth-of-type(3) > a:nth-of-type(3)'),
-				email: document.querySelector('.sig-preview div:nth-of-type(3) > a:nth-of-type(4)'),
-				'tagline-text': document.querySelector('.sig-preview div:nth-of-type(5) > :first-child').nextSibling, // can't css for a text node
-				'tagline-link': document.querySelector('.sig-preview div:nth-of-type(5) > a'),
-				'tagline-link-dest': document.querySelector('.sig-preview div:nth-of-type(5) > a')
+				office: document.querySelector('.sig-preview div:nth-of-type(2) > a:nth-of-type(1)'),
+				mobile: document.querySelector('.sig-preview div:nth-of-type(2) > a:nth-of-type(2)'),
+				fax: document.querySelector('.sig-preview div:nth-of-type(2) > a:nth-of-type(3)'),
+				email: document.querySelector('.sig-preview div:nth-of-type(2) > a:nth-of-type(4)'),
+				'tagline-text': document.querySelector('.sig-preview div:nth-of-type(4) > :first-child').nextSibling, // can't css for a text node
+				'tagline-link': document.querySelector('.sig-preview div:nth-of-type(4) > a'),
+				'tagline-link-dest': document.querySelector('.sig-preview div:nth-of-type(4) > a')
 			};
 
 			bindInput('name', 'Michael Ellis');
 			bindInput('email', 'michael.ellis@yardi.com');
 			bindInput('title', 'Widget Supervisor');
-			bindInput('address');
 			bindInput('office', '+1 (555) 555 0199');
 			bindInput('mobile');
 			bindInput('fax');
@@ -259,19 +249,6 @@
 				</label>
 			</p>
 			<p>
-				<label for="address">
-					<span class="label">Address:</span>
-					<select class="sig-input select-address" id="address" name="address">
-						<optgroup label="Corporate Headquarters">
-							<option data-office="800-866-1124" data-fax="805-699-2044">Yardi Systems / 430 S Fairview Avenue, Santa Barbara, CA 93117</option>
-						</optgroup>
-						<optgroup label="Canada">
-							<option data-office="778-331-0500" data-fax="778-331-0501">Yardi Canada Ltd / 576 Seymour Street, Suite 600, Vancouver, BC V6B 3K1</option>
-						</optgroup>
-					</select>
-				</label>
-			</p>
-			<p>
 				<label for="office">
 					<span class="label">Office #:</span>
 					<input type="tel" size="20" class="sig-input" id="office" name="office" value="">
@@ -325,7 +302,7 @@
 	<section class="content-box">
 		<h3>Preview</h3>
 		<div class="sig-preview">
-			<div style="font-family: arial, sans-serif; font-size: 13px; line-height: 1.3; color: #999999;">&nbsp;<br>&nbsp;<br><strong style="color: #003e74;">Michael Ellis</strong> / <span style="color: #003e74;">Widget Supervisor</span></div><div style="font-family: arial, sans-serif; font-size: 12px; line-height: 1.3; color: #999999;">EnerNOC, Inc. / 576 Seymour Street, Suite 600, Vancouver, BC V6B 3K1</div><div style="font-family: arial, sans-serif; font-size: 12px; line-height: 1.3; color: #999999;">t: <a href="tel:%2B1%20%28778%29%20331%200500" style="color: #999999; font-family: arial, sans-serif; text-decoration: none;">+1 (778) 331 0500</a> / m: <a href="tel:%2B1%20%28604%29%20555%200199" style="color: #999999; font-family: arial, sans-serif; text-decoration: none;">+1 (604) 555 0199</a> / f: <a href="tel:%2B1%20%28778%29%20331%200501" style="color: #999999; font-family: arial, sans-serif; text-decoration: none;">+1 (778) 331 0501</a> / <a href="mailto:michael.ellis@yardi.com" style="color: #003e74; text-decoration: none;">michael.ellis@yardi.com</a></div><div style="font-family: arial, sans-serif; font-size: 12px; line-height: 1.3; color: #999999;"><a href="http://www.yardi.com" style="color: #003e74; text-decoration: none;">www.yardi.com</a></div><div style="font-family: arial, sans-serif; font-size: 12px; line-height: 1.3; color: #999999;"><br>&#187; EnerNOC - Get more from energy <a href="http://www.yardi.com" style="color: #003e74; text-decoration: none;">Read more</a></div>
+			<div style="font-family: arial, sans-serif; font-size: 13px; line-height: 1.3; color: #999999;">&nbsp;<br>&nbsp;<br><strong style="color: #003e74;">Michael Ellis</strong> / <span style="color: #003e74;">Widget Supervisor</span></div><div style="font-family: arial, sans-serif; font-size: 12px; line-height: 1.3; color: #999999;">t: <a href="tel:%2B1%20%28778%29%20331%200500" style="color: #999999; font-family: arial, sans-serif; text-decoration: none;">+1 (778) 331 0500</a> / m: <a href="tel:%2B1%20%28604%29%20555%200199" style="color: #999999; font-family: arial, sans-serif; text-decoration: none;">+1 (604) 555 0199</a> / f: <a href="tel:%2B1%20%28778%29%20331%200501" style="color: #999999; font-family: arial, sans-serif; text-decoration: none;">+1 (778) 331 0501</a> / <a href="mailto:michael.ellis@yardi.com" style="color: #003e74; text-decoration: none;">michael.ellis@yardi.com</a></div><div style="font-family: arial, sans-serif; font-size: 12px; line-height: 1.3; color: #999999;"><a href="http://www.yardi.com" style="color: #003e74; text-decoration: none;">www.yardi.com</a></div><div style="font-family: arial, sans-serif; font-size: 12px; line-height: 1.3; color: #999999;"><br>&#187; EnerNOC - Get more from energy <a href="http://www.yardi.com" style="color: #003e74; text-decoration: none;">Read more</a></div>
 		</div>
 
 		<button id="sig-copy-button" class="if-zeroclipboard-enabled">Copy to clipboard</button>

@@ -1,8 +1,6 @@
 ### Yardi email signature generator
 
-Generates uniformly-styled email signatures for Yardi employees.
-
-Please [create issues](https://github.com/pulseenergy/yardi-email-signature-generator/issues) if there's anything it could do better.
+Generates uniformly-styled email signatures for Agilitek employees.
 
 ------
 
