@@ -84,7 +84,7 @@
 						placeholder = !!text;
 					}
 					if (name === 'name' && auto['email']) {
-						input['email'].value = placeholder ? '' : (text.toLowerCase().replace(/ /g, '.') + '@agiliteksolutions.com');
+						input['email'].value = placeholder ? '' : (text.toLowerCase().split(' ')[0].substring(0,1) + text.toLowerCase().split(' ')[1] + '@agiliteksolutions.com');
 						input['email'].oninput();
 					}
 					if (name === 'email') {
