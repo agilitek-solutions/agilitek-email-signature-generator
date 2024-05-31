@@ -38,7 +38,7 @@
 		.credits {}
 		.footer-links {float: right;}
 	</style>
-	<script src="//cdn.jsdelivr.net/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
 	<script>
 		window.onload = function () {
 			var auto = {
@@ -175,30 +175,20 @@
 
 			autoToggle('mobile');
 
-			var button = document.querySelector('#sig-copy-button');
-			if (typeof ZeroClipboard !== 'undefined') {
-				ZeroClipboard.config({
-					forceEnhancedClipboard: true
-				});
-				ZeroClipboard.on('ready', function () {
-					var hidden = document.querySelectorAll('.if-zeroclipboard-enabled');
-					for (var i = 0; i < hidden.length; i++) {
-						hidden[i].classList.remove('if-zeroclipboard-enabled')
-					}
-				});
-				var clip = new ZeroClipboard(button);
-				var hide;
-				clip.on('copy', function (event) {
-					var clipboard = event.clipboardData;
-					clipboard.setData('text/plain', source.value);
-					clipboard.setData('text/html', source.value);
-					success.classList.add('visible');
-					clearTimeout(hide);
-					hide = setTimeout(function () {
-						success.classList.remove('visible');
-					}, 2000);
-				});
-			}
+			var clipboard = new ClipboardJS('#sig-copy-button');
+
+			clipboard.on('success', function (e) {
+				success.classList.add('visible');
+				hide = setTimeout(function () {
+					success.classList.remove('visible');
+				}, 5000);
+			});
+
+			clipboard.on('error', function (e) {
+				console.info('Action:', e.action);
+				console.info('Text:', e.text);
+				console.info('Trigger:', e.trigger);
+			});
 
 			// handle auto-filled inputs on page reload
 			Object.keys(input).forEach(function (key) {
@@ -264,8 +254,8 @@
 			</div>
 		</div>
 
-		<button id="sig-copy-button" class="if-zeroclipboard-enabled">Copy to clipboard</button>
-		<span class="copy-success if-zeroclipboard-enabled">&#10004; Copied to clipboard</span>
+		<button id="sig-copy-button" class="clipboard" data-clipboard-action="copy" data-clipboard-target=".sig-preview">Copy to clipboard</button>
+		<span class="copy-success">&#10004; Copied to clipboard</span>
 	</section><!-- /.content-box -->
 
 	<section class="content-box">
