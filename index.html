@@ -66,7 +66,7 @@
 				var stripped = text.replace(/[-.() ]/g, '');
 				var match = stripped.match(/^(\+1)?(\d{3})(\d{3})(\d{4})$/);
 				if (match) {
-					text = ['+1', '(' + match[2] + ')', match[3], match[4]].join(' ');
+					text = ['+1', '(' + match[2] + ')', match[3], match[4]].join("\u00A0");
 				}
 				return text;
 			}
