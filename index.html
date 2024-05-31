@@ -102,6 +102,9 @@
 					if (placeholder && input[name].getAttribute('placeholder') !== text) {
 						input[name].setAttribute('placeholder', text);
 					}
+
+					output[name].textContent = text;
+
 					updateSource();
 				};
 			}
